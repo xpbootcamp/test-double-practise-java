@@ -2,9 +2,7 @@ package com.tw.practise;
 
 import com.tw.practise.service.UserService;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,11 +14,9 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @SpringBootTest
 @AutoConfigureMockMvc
-class TestDoublePractiseApplicationTests {
-
+public class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Mock
@@ -28,7 +24,7 @@ class TestDoublePractiseApplicationTests {
 
 
     @Test
-    public void should_register_success_when_user_register_given_valid_info() throws Exception {
+    public void should_request_register_api_success_when_user_register_given_valid_info() throws Exception {
         MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<>();
         String userName = "lisa";
         multiValueMap.add("userName", userName);
@@ -42,5 +38,4 @@ class TestDoublePractiseApplicationTests {
                 .params(multiValueMap))
                 .andExpect(status().isCreated());
     }
-
 }
